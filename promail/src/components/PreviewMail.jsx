@@ -1,10 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import style from '../styles/PreviewMail.module.css'; // Import the CSS module
 
 const PreviewMail = () => {
   const { msg, error } = useContext(AppContext);
-console.log(msg)
+  const [showLongWaitMessage, setShowLongWaitMessage] = useState(false);
+
+  // Handle timeout for loading
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShowLongWaitMessage(true);
+    }, 60000); // 60 seconds
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  console.log(msg);
+
   // Handle error state
   if (error) {
     const errorMessage = typeof error === 'object' && error.message ? error.message : error;
@@ -17,17 +29,16 @@ console.log(msg)
       const subject = encodeURIComponent(msg.emailSubject);
       const body = encodeURIComponent(msg.emailBody);
       const hrEmail = msg.hrEmail;
-  
+
       const mailtoLink = `mailto:${hrEmail}?subject=${subject}&body=${body}`;
       console.log(mailtoLink); // Check the mailto link
-  
+
       // Open the email client
       window.location.href = mailtoLink;
     } else {
-      alert("Please make sure HR email, subject, and body are provided.");
+      alert('Please make sure HR email, subject, and body are provided.');
     }
   };
-  
 
   // Handle message state if it exists
   if (msg) {
@@ -67,8 +78,16 @@ console.log(msg)
     );
   }
 
-  // Handle case where there's no message data
-  return <div className={style.noData}>No data to preview</div>;
+  // Handle loading state
+  return (
+    <div className={style.noData}>
+      {showLongWaitMessage ? (
+        <p>Loading is taking longer than expected, please wait up to 60 seconds.</p>
+      ) : (
+        <p>Please wait... </p>
+      )}
+    </div>
+  );
 };
 
 export default PreviewMail;
