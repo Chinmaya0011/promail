@@ -1,4 +1,3 @@
-Here’s a more detailed and complete `README.md` file that you can use for your GitHub repository:
 
 ```markdown
 # Resume Email Generator
