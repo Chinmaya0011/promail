@@ -1,0 +1,24 @@
+.container {
+    min-height: 100vh; /* min-h-screen */
+    background: linear-gradient(to right, #c5c5e1, #a5d9a5);
+    background-clip: padding-box; /* Ensures the gradient doesn't interfere with text */
+    color: inherit; 
+  }
+  
+  .textContainer {
+    text-align: center;
+    padding: 4rem 1.5rem; /* py-16 px-6 */
+  }
+  
+  .title {
+    font-size: 3.75rem; /* text-6xl */
+    font-weight: 800; /* font-extrabold */
+    color: #3182ce; /* text-blue-600 */
+    margin-bottom: 1rem; /* mb-4 */
+  }
+  
+  .paragraph {
+    font-size: 1.125rem; /* text-lg */
+    color: #4a5568; /* text-gray-700 */
+  }
+  

@@ -1,0 +1,97 @@
+/* Default Styles (for large screens like desktop) */
+.navbar {
+    background: linear-gradient(145deg, #2b6cb0, #1e4e8c); /* Gradient for depth */
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 2px 12px rgba(0, 0, 0, 0.1); /* Soft shadows */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px 20px;
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  .navbar:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), 0 4px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem; /* Adjusted padding */
+  }
+  
+  .logo {
+    font-size: 2rem; /* Larger font size */
+    font-weight: 800; /* Bold weight */
+    letter-spacing: 1px; /* Add spacing between letters */
+    text-transform: uppercase; /* Capitalize the text */
+    cursor: pointer; /* Add pointer cursor for interactivity */
+    transition: transform 0.3s ease-in-out, color 0.3s ease; /* Smooth scaling and color effect */
+    color: #ffcc00; /* Bright yellow color on hover */
+
+}
+ 
+  
+  .navLinks {
+    display: flex;
+    gap: 2rem; /* Adjusted gap between links */
+  }
+  
+  .navLink {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem; /* Consistent font size */
+    font-weight: 500; /* Normal weight */
+    text-transform: capitalize; /* Capitalize the links */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth color and transform transitions */
+  }
+  
+  .navLink:hover {
+    color: #f0e68c; /* Light yellow color on hover */
+    transform: translateY(-2px); /* Slight movement upwards */
+  }
+  
+  .navLink:active {
+    transform: translateY(1px); /* Create a pressed effect when clicked */
+  }
+  
+  /* Media Queries */
+  
+  /* Tablet Screens (min-width: 640px) */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0.75rem 1.5rem; /* Reduce padding for smaller screens */
+    }
+  
+    .logo {
+      font-size: 1.75rem; /* Slightly smaller logo */
+    }
+  
+    .navLinks {
+      gap: 1.5rem; /* Adjust the space between the links */
+    }
+  
+    .navLink {
+      font-size: 0.9rem; /* Slightly smaller links */
+    }
+  }
+  
+  /* Mobile Screens (min-width: 320px and max-width: 640px) */
+  @media (max-width: 640px) {
+    .container {
+      padding: 0.75rem 1rem; /* Adjust padding for mobile */
+    }
+  
+    .logo {
+      font-size: 1.5rem; /* Smaller logo for mobile */
+      margin-right: 1rem; /* Add space between logo and links */
+    }
+  
+    .navLinks {
+      gap: 1.2rem; /* Adjust space between the links */
+    }
+  
+    .navLink {
+      font-size: 0.9rem; /* Smaller font size for links */
+    }
+  }
+  
