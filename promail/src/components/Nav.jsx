@@ -14,7 +14,7 @@ const Nav = () => {
         {/* Navigation Links */}
         <div className={styles.navLinks}>
           <Link to="/" className={styles.navLink}>Home</Link>
-          <Link to="/history" className={styles.navLink}>History</Link>
+          {/* <Link to="/history" className={styles.navLink}>History</Link> */}
         </div>
       </div>
     </nav>
