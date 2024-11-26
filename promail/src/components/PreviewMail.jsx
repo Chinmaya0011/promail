@@ -1,26 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import style from '../styles/PreviewMail.module.css'; // Import the CSS module
 
 const PreviewMail = () => {
-  const { msg, error } = useContext(AppContext);
-  const [showLongWaitMessage, setShowLongWaitMessage] = useState(false);
-
-  // Handle timeout for loading
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowLongWaitMessage(true);
-    }, 60000); // 60 seconds
-
-    return () => clearTimeout(timeout);
-  }, []);
-
-  console.log(msg);
+  const { msg, error, show } = useContext(AppContext);
 
   // Handle error state
   if (error) {
     const errorMessage = typeof error === 'object' && error.message ? error.message : error;
-    return <div className={style.error}>{String(errorMessage)}</div>; // Add className from CSS module
+    return <div className={style.error}>{String(errorMessage)}</div>;
   }
 
   // Function to handle sending email directly to HR using mailto
@@ -40,8 +28,23 @@ const PreviewMail = () => {
     }
   };
 
-  // Handle message state if it exists
-  if (msg) {
+  // Handle case when `show` is false
+
+  // Handle case when `show` is true but `msg` is missing
+  if (show && !msg) {
+    return (
+      <div className={style.noData}>
+        <p>Loading message data...</p>
+        <p>
+          This may take up to 60 seconds. Please wait patiently as we prepare your email preview.
+        </p>
+      </div>
+    );
+  }
+  
+
+  // Handle case when `show` is true and `msg` is available
+  if (show && msg) {
     return (
       <div className={style.preview}>
         <h3 className={style.heading}>Preview Mail</h3>
@@ -78,16 +81,7 @@ const PreviewMail = () => {
     );
   }
 
-  // Handle loading state
-  return (
-    <div className={style.noData}>
-      {showLongWaitMessage ? (
-        <p>Loading is taking longer than expected, please wait up to 60 seconds.</p>
-      ) : (
-        <p>Please wait... </p>
-      )}
-    </div>
-  );
+  // Fallback for unexpected states
 };
 
 export default PreviewMail;

@@ -6,7 +6,7 @@ import { AppContext } from "../context/AppContext"; // Import the context
 
 const MailComposer = () => {
   // Access the context values (formData and functions)
-  const { formData, handleChange, handleFileChange, handleSubmit } = useContext(AppContext);
+  const { formData, handleChange, handleFileChange, handleSubmit,setShow } = useContext(AppContext);
 
   return (
     <div className={styles.mailComposerWrapper}>
@@ -73,7 +73,7 @@ const MailComposer = () => {
             )}
           </div>
 
-          <button type="submit" className={styles.submitButton}>
+          <button type="submit" className={styles.submitButton} onClick={()=>setShow(true)}>
             Generate
           </button>
         </form>

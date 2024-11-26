@@ -8,6 +8,7 @@ export const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
   const [msg, setMsg] = useState(null); // Success message
   const [error, setError] = useState(null); // Error message
+  const[show,setShow]=useState(false)
   const [formData, setFormData] = useState({
     position: "",
     hrEmail: "",
@@ -66,6 +67,8 @@ export const AppContextProvider = ({ children }) => {
         handleChange,
         handleFileChange,
         handleSubmit,
+        show,
+        setShow
       }}
     >
       {children}
