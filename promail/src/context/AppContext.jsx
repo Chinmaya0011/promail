@@ -43,7 +43,7 @@ export const AppContextProvider = ({ children }) => {
     formDataToSend.append('resume', formData.resume);
 
     // Send data to the server
-    axios.post('http://localhost:3000/', formDataToSend, {
+    axios.post('https://promail.onrender.com/', formDataToSend, {
       headers: {
         'Content-Type': 'multipart/form-data', // Ensure correct Content-Type for file upload
       },
